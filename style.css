@@ -4,7 +4,23 @@
     --text-color: #333;
     --bg-color: #fff;
     --bg-light: #f8fafc;
-    --nav-height: 70px;
+
+    /* PC Nav Settings */
+    --nav-height: 250px;         /* PC: 初期状態の高さ */
+    --nav-height-scroll: 80px;   /* PC: スクロール時の高さ */
+
+    /* Mobile Nav Settings (ここを追加・調整可能に) */
+    --nav-height-mobile: 200px;        /* スマホ: 初期状態の高さ */
+    --nav-height-scroll-mobile: 100px; /* スマホ: スクロール時の高さ */
+
+    /* Logo Size Settings (ここでロゴサイズを指定) */
+    --logo-height: 350px;        /* PC: 通常時の高さ */
+    --logo-height-scroll: 100px; /* PC: スクロール時の高さ */
+
+    /* スマホ用ロゴ設定 */
+    --logo-height-mobile: 250px;        /* スマホ: 高さ */
+    --logo-height-scroll-mobile: 120px;  /* スマホ: スクロール時の高さ (追加) */
+
     --transition: all 0.3s ease;
     --font-heading: 'Montserrat', sans-serif;
     --font-body: 'Noto Sans JP', sans-serif;
@@ -56,36 +72,91 @@ ul { list-style: none; }
 
 /* Navigation */
 .navbar {
-    position: sticky; /* fixedから変更: スクロールに追従するが、場所を確保する */
+    position: fixed; /* stickyから変更: 動画の上に重ねる */
     top: 0;
     width: 100%;
     height: var(--nav-height);
-    background: var(--bg-color); /* 透明から背景色(白)に変更し、文字を見やすくする */
+    background: transparent; /* 初期状態は透明 */
     display: flex;
     align-items: center;
     z-index: 1000;
-    transition: var(--transition);
-    border-bottom: 1px solid rgba(0,0,0,0.05); /* 境界線を薄く追加 */
+    transition: var(--transition); /* 高さの変化もアニメーション */
+    border-bottom: none;
 }
 
 .navbar.scrolled {
-    background: rgba(255, 255, 255, 0.98); /* スクロール時は少し透過を下げる程度に */
+    background: rgba(255, 255, 255, 0.98); /* スクロール時は白背景 */
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    height: var(--nav-height-scroll); /* 変数に変更 */
 }
 
 .nav-container {
     width: 100%;
     display: flex;
-    justify-content: center; /* space-betweenから変更: 中央寄せ */
+    justify-content: center;
     align-items: center;
-    gap: 60px; /* ロゴとメニューの間隔 */
+    gap: 60px;
+}
+
+/* --- ここから修正：スクロール前のスタイル強化 --- */
+
+/* スクロールしていない時だけ、ナビゲーション背景に薄い黒グラデーションを敷くことで文字を見やすくする */
+.navbar:not(.scrolled) {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, transparent 100%);
+}
+
+/* スクロールしていない時のリンク文字（白文字＋強めの影） */
+.navbar:not(.scrolled) .nav-links a {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(0,0,0,0.7), 0 2px 4px rgba(0,0,0,0.9); /* 影を重ね掛けして視認性アップ */
+}
+
+/* スクロールしていない時のロゴ（黒いロゴ画像を白く反転＋影） */
+.navbar:not(.scrolled) .logo img {
+    filter: brightness(0) invert(1) drop-shadow(0 2px 4px rgba(0,0,0,0.8));
+}
+
+/* スクロールしていない時のハンバーガーメニュー */
+.navbar:not(.scrolled) .menu-toggle .bar {
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.8);
+}
+
+/* --- 修正ここまで --- */
+
+/* スクロールした時の文字色（通常色に戻す） */
+.navbar.scrolled .nav-links a {
+    color: var(--text-color);
 }
 
 .logo {
-    color: #114514;
-    font-weight: 1000;
-    font-size: 1rem;
-    letter-spacing: 2px;
+    /* 画像配置用にフレックスボックス化 */
+    display: flex;
+    align-items: center;
+}
+
+/* 旧設定：固定サイズ
+.logo img {
+    height: 50px;
+    width: auto;
+    ...
+}
+*/
+
+/* 新設定：自動調整 */
+.logo img {
+    height: var(--logo-height); /* 変数で指定した高さ */
+    width: auto;                /* 幅は自動（比率維持） */
+    max-width: 100%;
+    display: block;
+    transition: var(--transition);
+    object-fit: contain;   /* 歪み防止 */
+}
+
+/* スクロール時にロゴ画像も小さくする */
+.navbar.scrolled .logo img {
+    height: var(--logo-height-scroll); /* 変数で指定した高さ */
+    max-height: none; /* 上書きされないようにリセット */
 }
 
 .nav-links { display: flex; gap: 30px; align-items: center; }
@@ -122,7 +193,7 @@ ul { list-style: none; }
 
 /* Hero Section */
 .hero {
-    height: calc(100vh - var(--nav-height)); /* ナビゲーションの高さ分だけ減らして画面に収める */
+    height: 100vh; /* ナビゲーション分の減算を削除し、画面いっぱいに */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -372,10 +443,31 @@ ul { list-style: none; }
 @media (max-width: 768px) {
     .section { padding: 60px 0; }
 
+    /* モバイル時は変数で高さを制御 */
+    .navbar {
+        height: var(--nav-height-mobile);
+    }
+
+    /* モバイルでのスクロール時の高さ制御を追加 */
+    .navbar.scrolled {
+        height: var(--nav-height-scroll-mobile);
+    }
+
     /* モバイル時は操作性を考慮して左右配置に戻す */
     .nav-container {
         justify-content: space-between;
         gap: 0;
+    }
+
+    /* モバイル用ロゴサイズ調整（通常時） */
+    .logo img {
+        height: var(--logo-height-mobile);
+        max-height: none;
+    }
+
+    /* モバイルでのスクロール時のロゴサイズ調整（追加） */
+    .navbar.scrolled .logo img {
+        height: var(--logo-height-scroll-mobile);
     }
 
     /* Note: Font sizes for titles are now handled by clamp() above */
