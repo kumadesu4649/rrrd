@@ -23,9 +23,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Video Mute & Autoplay Control
     const heroVideo = document.querySelector('.hero-video');
     if (heroVideo) {
-        heroVideo.muted = true; // JSで確実にミュートにする
+        // HTML属性ではなくJSで明示的に設定
+        heroVideo.muted = true;         // 音声を消す (Autoplayに必須)
+        heroVideo.defaultMuted = true;  // 初期状態としてミュートを設定
+        heroVideo.loop = true;          // ループ再生
+        heroVideo.playsInline = true;   // iOS等のためのインライン再生設定
+
+        // 再生を試行
         heroVideo.play().catch(error => {
             console.log("Video autoplay prevented:", error);
+            // 自動再生がブロックされた場合は、ユーザーインタラクション（クリックなど）を待つ等の処理をここに記述可能
         });
     }
 
