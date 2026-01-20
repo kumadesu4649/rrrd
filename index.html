@@ -37,8 +37,8 @@
     <!-- Hero Section -->
     <header class="hero">
         <!-- 背景動画: 音なしループ再生 -->
-        <video class="hero-video" autoplay loop playsinline poster="./img/title.JPG">
-            <source src="./img/output.mp4" type="video/mp4">
+        <!-- iOS Safari対応: HTMLタグにも muted を明記しないと自動再生されない場合があります -->
+        <video class="hero-video" src="./img/output.mp4" autoplay loop muted playsinline>
             Your browser does not support the video tag.
         </video>
 
