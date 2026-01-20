@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News | University Club Name</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        /* 下層ページ用のヘッダースタイル (about.htmlと同様) */
+        .page-header {
+            position: relative;
+            height: 50vh;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('assets/img/title.JPG');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            margin-bottom: 4rem;
+        }
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+        }
+        .page-title-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            margin-top: 12rem; /* 位置を下に調整 */
+        }
+        .page-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/img/logo.png" alt="麗澤ロボットデモ隊">
+            </a>
+
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./works.html">Works</a></li>
+                <li><a href="./news.html">News</a></li>
+                <li><a href="./join.html" class="btn-primary">Join Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="page-title-content fade-in">
+            <h1 class="page-title">News</h1>
+            <p>最新の活動情報やお知らせの一覧</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="section">
+            <div class="container">
+                <!-- ニュースリスト (トップページより詳細なリストを想定) -->
+                <div class="news-list">
+                    <article class="news-item" style="display:flex; flex-direction:column; align-items:flex-start; margin-bottom: 2rem; border-bottom: 1px solid #eee; padding-bottom: 2rem;">
+                        <span class="news-date" style="color:#666; font-size:0.9rem;">2023.10.15</span>
+                        <span class="news-cat" style="background:#eee; padding:2px 8px; font-size:0.8rem; margin: 0.5rem 0;">Event</span>
+                        <h3 class="news-title" style="font-size:1.5rem; margin-bottom:1rem;">秋の学園祭での展示内容が決定しました。</h3>
+                        <p>今年の学園祭では、新作ロボットのデモンストレーションに加え、来場者が実際に操作できる体験ブースを設置します...</p>
+                    </article>
+
+                    <article class="news-item" style="display:flex; flex-direction:column; align-items:flex-start; margin-bottom: 2rem; border-bottom: 1px solid #eee; padding-bottom: 2rem;">
+                        <span class="news-date" style="color:#666; font-size:0.9rem;">2023.09.20</span>
+                        <span class="news-cat" style="background:#eee; padding:2px 8px; font-size:0.8rem; margin: 0.5rem 0;">Report</span>
+                        <h3 class="news-title" style="font-size:1.5rem; margin-bottom:1rem;">夏合宿の活動報告レポートを公開しました。</h3>
+                        <p>2泊3日で実施した開発合宿の様子をブログにまとめました。ハッカソンの成果物紹介もあります。</p>
+                    </article>
+
+                    <article class="news-item" style="display:flex; flex-direction:column; align-items:flex-start; margin-bottom: 2rem; border-bottom: 1px solid #eee; padding-bottom: 2rem;">
+                        <span class="news-date" style="color:#666; font-size:0.9rem;">2023.09.01</span>
+                        <span class="news-cat" style="background:#eee; padding:2px 8px; font-size:0.8rem; margin: 0.5rem 0;">Info</span>
+                        <h3 class="news-title" style="font-size:1.5rem; margin-bottom:1rem;">新規部員の募集（秋採用）を開始します。</h3>
+                        <p>後期からの参加も大歓迎です。興味のある方はJoin Usページからお問い合わせください。</p>
+                    </article>
+                </div>
+
+                <!-- ページネーションなどのプレースホルダー -->
+                <div style="text-align:center; margin-top:3rem;">
+                    <span style="font-size:1.2rem; margin:0 1rem; font-weight:bold;">1</span>
+                    <a href="#" style="font-size:1.2rem; margin:0 1rem; text-decoration:none;">2</a>
+                    <a href="#" style="font-size:1.2rem; margin:0 1rem; text-decoration:none;">3</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>&copy; 2023 University Club Name. All Rights Reserved.</p>
+            <div class="social-links">
+                <a href="#">Twitter</a>
+                <a href="#">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../src/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | University Club Name</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- 下層ページ用の一時的なスタイル（本来はstyle.cssに記述推奨） -->
+    <style>
+        .page-header {
+            position: relative;
+            height: 50vh;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('assets/img/title.JPG'); /* 背景画像 */
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            margin-bottom: 4rem;
+        }
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5); /* 文字を見やすくする暗いフィルター */
+        }
+        .page-title-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            margin-top: 12rem;
+        }
+        .page-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation (index.htmlと共通) -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/img/logo.png" alt="麗澤ロボットデモ隊">
+            </a>
+
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+
+            <ul class="nav-links">
+                <!-- 自ページへのリンクはクラスなどで現在地表示をしても良い -->
+                <li><a href="./about.html">About</a></li>
+                <!-- 他のセクションへのリンクはindex.htmlへのアンカーに変更 -->
+                <li><a href="./works.html">Works</a></li>
+                <li><a href="index.html#news">News</a></li>
+                <li><a href="#contact" class="btn-primary">Join Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header (下層ページ用のヘッダー) -->
+    <header class="page-header">
+        <div class="page-title-content fade-in">
+            <h1 class="page-title">Works</h1>
+            <p>私たちの活動、ミッション、チームについて</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="section">
+            <div class="container">
+                <div class="about-text">
+                    <h2 class="section-title">Mission</h2>
+                    <p class="lead" style="margin-bottom: 3rem;">テクノロジーと創造性で、<br>新しい常識をつくる。</p>
+
+                    <p>ここには団体の詳細な紹介文が入ります。設立の経緯や、普段どのような活動をしているのか、何を目指しているのかなどを記述してください。</p>
+                    <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- メンバー紹介や沿革などをここに追加 -->
+        <section class="section bg-light">
+            <div class="container">
+                <h2 class="section-title">Our Structure</h2>
+                <p>組織図やチーム構成などをここに記載します。</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>&copy; 2023 University Club Name. All Rights Reserved.</p>
+            <div class="social-links">
+                <a href="#">Twitter</a>
+                <a href="#">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../src/js/script.js"></script>
+</body>
+</html>
