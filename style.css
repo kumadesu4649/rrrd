@@ -1,0 +1,483 @@
+:root {
+    --primary-color: #2563eb;
+    --accent-color: #e74c3c;
+    --text-color: #333;
+    --bg-color: #fff;
+    --bg-light: #f8fafc;
+    --nav-height: 70px;
+    --transition: all 0.3s ease;
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Noto Sans JP', sans-serif;
+}
+
+/* Base Font Size Settings for different screens */
+html {
+    font-size: 16px;
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+    background-color: var(--bg-color);
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+/* Utilities */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section { padding: 100px 0; position: relative; }
+.bg-light { background-color: var(--bg-light); }
+
+/* Navigation */
+.navbar {
+    position: sticky; /* fixedから変更: スクロールに追従するが、場所を確保する */
+    top: 0;
+    width: 100%;
+    height: var(--nav-height);
+    background: var(--bg-color); /* 透明から背景色(白)に変更し、文字を見やすくする */
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+    transition: var(--transition);
+    border-bottom: 1px solid rgba(0,0,0,0.05); /* 境界線を薄く追加 */
+}
+
+.navbar.scrolled {
+    background: rgba(255, 255, 255, 0.98); /* スクロール時は少し透過を下げる程度に */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.nav-container {
+    width: 100%;
+    display: flex;
+    justify-content: center; /* space-betweenから変更: 中央寄せ */
+    align-items: center;
+    gap: 60px; /* ロゴとメニューの間隔 */
+}
+
+.logo {
+    color: #114514;
+    font-weight: 1000;
+    font-size: 1rem;
+    letter-spacing: 2px;
+}
+
+.nav-links { display: flex; gap: 30px; align-items: center; }
+.nav-links a { font-weight: 700; font-size: 0.9rem; transition: var(--transition); }
+.nav-links a:hover { color: var(--primary-color); }
+
+.btn-primary {
+    background: var(--primary-color);
+    color: #fff !important;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 700;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+}
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-color);
+    margin: 3px 0;
+    transition: 0.4s;
+}
+
+/* Hero Section */
+.hero {
+    height: calc(100vh - var(--nav-height)); /* ナビゲーションの高さ分だけ減らして画面に収める */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    /* 背景画像を削除し、動画要素に任せる */
+    color: #fff;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    overflow: hidden; /* 動画のサイズ調整用 */
+}
+
+/* 背景動画のスタイル */
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /*アスペクト比を維持して埋める*/
+    z-index: 0;
+}
+
+.bg-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    /* 背景を暗くして文字を見やすくする & グリッド */
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.8)),
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 100% 100%, 50px 50px, 50px 50px;
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.hero-title {
+    /* Fluid typography: Min 2.5rem, Preferred 8vw, Max 5rem */
+    font-size: clamp(5em, 8vw, 5rem);
+    font-weight: 900;
+    margin-bottom: 20px;
+    line-height: 1.1;
+    letter-spacing: -2px;
+    background: linear-gradient(45deg, #fff, #a5b4fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* グラデーション文字用の影 */
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.6));
+}
+
+.hero-subtitle {
+    /* Fluid typography: Min 1rem, Preferred 3vw, Max 1.2rem */
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    margin-bottom: 40px;
+    opacity: 0.9;
+    /* 通常文字用の影 */
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+}
+
+.btn-outline {
+    border: 2px solid #fff;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 700;
+    transition: var(--transition);
+}
+.btn-outline:hover {
+    background: #fff;
+    color: #333;
+}
+
+/* About Section */
+.section-title {
+    /* Fluid typography: Min 2rem, Preferred 5vw, Max 3rem */
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 900;
+    margin-bottom: 40px;
+    text-align: center;
+}
+.section-title.text-left { text-align: left; }
+.section-title.text-left::after { margin: 15px 0 0; }
+
+.lead {
+    /* Fluid typography: Min 1.1rem, Preferred 3vw, Max 1.5rem */
+    font-size: clamp(1.1rem, 3vw, 1.5rem);
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.about-image {
+    position: relative;
+    z-index: 1;
+}
+.about-image img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+.about-image .accent-box {
+    position: absolute;
+    bottom: -20px;
+    left: -20px;
+    width: 70%;
+    height: 70%;
+    background: var(--primary-color);
+    z-index: -1;
+    opacity: 0.1;
+    border-radius: 10px;
+}
+
+.btn-text {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-top: 20px;
+    font-size: 1.1rem;
+    position: relative;
+    padding-bottom: 5px;
+}
+.btn-text::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0%; height: 2px;
+    background: var(--primary-color);
+    transition: var(--transition);
+}
+.btn-text:hover::after { width: 100%; }
+.btn-text .arrow { margin-left: 10px; transition: var(--transition); }
+.btn-text:hover .arrow { transform: translateX(5px); }
+
+/* Works Section (replaces .card related generic grid mainly) */
+.slant-top {
+    /* Create a reverse slant background effect if needed, or just standard bg */
+}
+
+.section-header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 60px;
+}
+.section-desc { color: #666; }
+
+.card {
+    border: none; /* override existing */
+}
+
+.card-tag {
+    display: inline-block;
+    padding: 4px 12px;
+    background: rgba(37, 99, 235, 0.1);
+    color: var(--primary-color);
+    font-size: 0.8rem;
+    font-weight: 700;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+.btn-primary-outline {
+    display: inline-block;
+    padding: 12px 40px;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    font-weight: 700;
+    border-radius: 50px;
+    transition: var(--transition);
+}
+.btn-primary-outline:hover {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+.mt-5 { margin-top: 50px; }
+.text-center { text-align: center; }
+
+/* News Section */
+.news-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.news-item {
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+    transition: var(--transition);
+}
+.news-item:hover {
+    padding-left: 15px;
+    border-color: var(--primary-color);
+}
+.news-item:hover .news-title { color: var(--primary-color); }
+
+.news-date {
+    font-family: var(--font-heading);
+    color: #999;
+    font-size: 0.9rem;
+    min-width: 100px;
+}
+.news-cat {
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 2px 10px;
+    background: #333;
+    color: #fff;
+    border-radius: 4px;
+    margin-right: 20px;
+    min-width: 80px;
+    text-align: center;
+}
+.news-title {
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+/* Animation Classes */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .section { padding: 60px 0; }
+
+    /* モバイル時は操作性を考慮して左右配置に戻す */
+    .nav-container {
+        justify-content: space-between;
+        gap: 0;
+    }
+
+    /* Note: Font sizes for titles are now handled by clamp() above */
+
+    .hero-title {
+        margin-bottom: 15px;
+    }
+
+    .hero-subtitle {
+        padding: 0 10px;
+    }
+
+    /* Mobile Navigation */
+    .menu-toggle {
+        display: flex;
+        z-index: 1001; /* Ensure above overlay */
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        height: 100vh;
+        background: rgba(255, 255, 255, 0.98);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: var(--transition);
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .nav-links li {
+        margin: 20px 0;
+    }
+
+    .nav-links li a {
+        font-size: 1.2rem;
+    }
+
+    /* Hamburger Animation */
+    .menu-toggle.is-active .bar:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    .menu-toggle.is-active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-toggle.is-active .bar:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    /* Card Grid */
+    .card-grid {
+        display: grid;
+        grid-template-columns: 1fr; /* Force single column */
+        gap: 30px;
+    }
+
+    /* Adjust Card Typography for Mobile */
+    .card-content h3 {
+        font-size: 1.3rem;
+    }
+    .card-content p {
+        font-size: 0.95rem;
+    }
+
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+
+    .news-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .news-date, .news-cat { margin-bottom: 5px; }
+
+    .section-title { margin-bottom: 30px; }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+    .section-title {
+        text-align: center !important; /* Force center on very small screens */
+    }
+    .section-title.text-left::after {
+        margin: 15px auto 0;
+    }
+
+    .btn-primary, .btn-outline {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+        width: 100%; /* Full width buttons on mobile */
+        text-align: center;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .hero-scroll-indicator {
+        bottom: 10%;
+    }
+}

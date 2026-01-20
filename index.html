@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Club Name | Create the Future</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">麗澤<br>ロボットデモ隊</a>
+
+            <!-- ここにハンバーガーメニューを追加 -->
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#works">Works</a></li>
+                <li><a href="#news">News</a></li>
+                <li><a href="#contact" class="btn-primary">Join Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <!-- 背景動画: 音なしループ再生 -->
+        <video class="hero-video" autoplay loop playsinline poster="./img/title.JPG">
+            <source src="./img/robotdemoPV3%20(2).mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <div class="bg-overlay"></div>
+        <div class="hero-content fade-in">
+            <h1 class="hero-title">Beyond<br>the Canvas.</h1>
+            <p class="hero-subtitle">見るだけじゃない。 <br>触れて、動かして、未来を感じる。</p>
+            <div class="hero-scroll-indicator">
+                <div class="line"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image fade-in">
+                    <img src=img/title.JPG alt="Our Team">
+                    <div class="accent-box"></div>
+                </div>
+                <div class="about-text fade-in delay-100">
+                    <h2 class="section-title text-left">About Us</h2>
+                    <p class="lead">「好き」をカタチにする、<br>クリエイティブ・プラットフォーム。</p>
+                    <p>設立から2年。私たちは学部や学年の垣根を超え、多様な価値観を持つ学生が集まる場所です。一人ひとりの「やってみたい」という情熱が、新しいプロジェクトを生み出しています。</p>
+                    <a href="#" class="btn-text">View Detail <span class="arrow">→</span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Works Section (Renamed from Activities) -->
+    <section id="works" class="section bg-light slant-top">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Selected Works</h2>
+                <p class="section-desc">私たちが手掛けたプロジェクトの一部をご紹介します。</p>
+            </div>
+
+            <div class="card-grid">
+                <div class="card fade-in delay-100">
+                    <div class="card-image" style="background-image: url('img/title.JPG');"></div>
+                    <div class="card-content">
+                        <span class="card-tag">Tech</span>
+                        <h3>つくばチャレンジ2025</h3>
+                        <p>全国の学生エンジニアと競い合う、24時間の開発マラソン。</p>
+                    </div>
+                </div>
+                <div class="card fade-in delay-200">
+                    <div class="card-image" style="background-image: url('https://source.unsplash.com/random/800x600?design');"></div>
+                    <div class="card-content">
+                        <span class="card-tag">Art</span>
+                        <h3>WorldRobotSummit</h3>
+                        <p>キャンパス全体を美術館に変える、大規模インスタレーション。</p>
+                    </div>
+                </div>
+                <div class="card fade-in delay-300">
+                    <div class="card-image" style="background-image: url('https://source.unsplash.com/random/800x600?workshop');"></div>
+                    <div class="card-content">
+                        <span class="card-tag">Community</span>
+                        <h3>Try!ロボット教室</h3>
+                        <p>地域の子供たちに向けた、遊びながら学ぶプログラミング教室。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5 fade-in">
+                <a href="#" class="btn-primary-outline">View All Works</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section id="news" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Latest News</h2>
+            <div class="news-list fade-in delay-100">
+                <a href="#" class="news-item">
+                    <span class="news-date">2023.10.15</span>
+                    <span class="news-cat">Event</span>
+                    <span class="news-title">秋の学園祭での展示内容が決定しました。</span>
+                </a>
+                <a href="#" class="news-item">
+                    <span class="news-date">2023.09.20</span>
+                    <span class="news-cat">Report</span>
+                    <span class="news-title">夏合宿の活動報告レポートを公開しました。</span>
+                </a>
+                <a href="#" class="news-item">
+                    <span class="news-date">2023.09.01</span>
+                    <span class="news-cat">Info</span>
+                    <span class="news-title">新規部員の募集（秋採用）を開始します。</span>
+                </a>
+            </div>
+            <div class="text-center mt-5 fade-in">
+                <a href="#" class="btn-text">More News <span class="arrow">→</span></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>&copy; 2023 University Club Name. All Rights Reserved.</p>
+            <div class="social-links">
+                <a href="#">Twitter</a>
+                <a href="#">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
