@@ -235,17 +235,21 @@ ul { list-style: none; }
 }
 
 .hero-title {
+    font-family: "DM Serif Text", serif;
+    font-weight: 400;
+    font-style: normal;
     /* Fluid typography: Min 2.5rem, Preferred 8vw, Max 5rem */
     font-size: clamp(5em, 8vw, 5rem);
     font-weight: 900;
     margin-bottom: 20px;
     line-height: 1.1;
     letter-spacing: -2px;
-    background: linear-gradient(45deg, #fff, #a5b4fc);
+    background: linear-gradient(45deg, #fff, #cff4d2);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     /* グラデーション文字用の影 */
     filter: drop-shadow(0 4px 10px rgba(0,0,0,0.6));
+    margin-top: 12rem;
 }
 
 .hero-subtitle {
