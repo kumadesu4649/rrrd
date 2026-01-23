@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News | 麗澤ロボットデモ隊</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        /* 下層ページ用のヘッダースタイル (about.htmlと同様) */
+        .page-header {
+            position: relative;
+            height: 50vh;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('assets/img/title.JPG');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            margin-bottom: 4rem;
+        }
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+        }
+        .page-title-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            margin-top: 12rem; /* 位置を下に調整 */
+        }
+        .page-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* 追加: ビデオプレイヤー用の最小スタイル */
+        .video-wrap {
+            display:flex;
+            justify-content:center;
+            margin-bottom:2rem;
+        }
+        .video-overlay {
+            position:relative;
+            max-width:960px;
+            width:100%;
+        }
+        #robotVideo {
+            width:100%;
+            height:auto;
+            display:block;
+            background:#000;
+            border-radius:8px;
+        }
+        .play-btn {
+            position:absolute;
+            left:50%;
+            top:50%;
+            transform:translate(-50%,-50%);
+            background:rgba(0,0,0,0.6);
+            color:#fff;
+            border:none;
+            padding:12px 16px;
+            border-radius:50%;
+            font-size:18px;
+            cursor:pointer;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+        }
+        @media (max-width:600px){
+            .page-title-content { margin-top:8rem; }
+            .play-btn { padding:10px 12px; font-size:16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/img/logo.png" alt="麗澤ロボットデモ隊">
+            </a>
+
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./works.html">Works</a></li>
+                <li><a href="./news.html">News</a></li>
+                <li><a href="./join.html" class="btn-primary">Join Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="page-title-content fade-in">
+            <h1 class="page-title">News</h1>
+            <p>最新の活動情報やお知らせの一覧</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="section">
+            <div class="container">
+
+                <!-- 追加: robotdemoPV のビデオプレイヤー -->
+                <div class="video-wrap">
+                    <div class="video-overlay">
+                        <!-- 変更: autoplay と loop を追加。muted と playsinline は自動再生のために必須 -->
+                        <video id="robotVideo" autoplay loop playsinline muted preload="metadata" poster="assets/img/video-poster.jpg">
+                            <source src="./robotdemoPV3%20(2).mp4" type="video/mp4">
+                            お使いのブラウザは動画タグに対応していません。
+                        </video>
+                        <button id="videoPlayBtn" class="play-btn" aria-label="再生">▶</button>
+                    </div>
+                </div>
+
+                <!-- ニュースリスト (トップページより詳細なリストを想定) -->
+                <div class="news-list">
+                    <article class="news-item" style="display:flex; flex-direction:column; align-items:flex-start; margin-bottom: 2rem; border-bottom: 1px solid #eee; padding-bottom: 2rem;">
+                        <span class="news-date" style="color:#666; font-size:0.9rem;">2023.10.15</span>
+                        <span class="news-cat" style="background:#eee; padding:2px 8px; font-size:0.8rem; margin: 0.5rem 0;">Event</span>
+                        <h3 class="news-title" style="font-size:1.5rem; margin-bottom:1rem;">秋の学園祭での展示内容が決定しました。</h3>
+                        <p>今年の学園祭では、新作ロボットのデモンストレーションに加え、来場者が実際に操作できる体験ブースを設置します...</p>
+                    </article>
+
+                    <article class="news-item" style="display:flex; flex-direction:column; align-items:flex-start; margin-bottom: 2rem; border-bottom: 1px solid #eee; padding-bottom: 2rem;">
+                        <span class="news-date" style="color:#666; font-size:0.9rem;">2023.09.20</span>
+                        <span class="news-cat" style="background:#eee; padding:2px 8px; font-size:0.8rem; margin: 0.5rem 0;">Report</span>
+                        <h3 class="news-title" style="font-size:1.5rem; margin-bottom:1rem;">夏合宿の活動報告レポートを公開しました。</h3>
+                        <p>2泊3日で実施した開発合宿の様子をブログにまとめました。ハッカソンの成果物紹介もあります。</p>
+                    </article>
+
+                    <article class="news-item" style="display:flex; flex-direction:column; align-items:flex-start; margin-bottom: 2rem; border-bottom: 1px solid #eee; padding-bottom: 2rem;">
+                        <span class="news-date" style="color:#666; font-size:0.9rem;">2023.09.01</span>
+                        <span class="news-cat" style="background:#eee; padding:2px 8px; font-size:0.8rem; margin: 0.5rem 0;">Info</span>
+                        <h3 class="news-title" style="font-size:1.5rem; margin-bottom:1rem;">新規部員の募集（秋採用）を開始します。</h3>
+                        <p>後期からの参加も大歓迎です。興味のある方はJoin Usページからお問い合わせください。</p>
+                    </article>
+                </div>
+
+                <!-- ページネーションなどのプレースホルダー -->
+                <div style="text-align:center; margin-top:3rem;">
+                    <span style="font-size:1.2rem; margin:0 1rem; font-weight:bold;">1</span>
+                    <a href="#" style="font-size:1.2rem; margin:0 1rem; text-decoration:none;">2</a>
+                    <a href="#" style="font-size:1.2rem; margin:0 1rem; text-decoration:none;">3</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>&copy; 2023 University Club Name. All Rights Reserved.</p>
+            <div class="social-links">
+                <a href="#">Twitter</a>
+                <a href="#">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../src/js/script.js"></script>
+
+    <script>
+        // 変更: 自動再生を試み、失敗したらボタンで再生させる。ループは属性で動作するが念のため ended イベントは不要。
+        (function(){
+            const video = document.getElementById('robotVideo');
+            const btn = document.getElementById('videoPlayBtn');
+            if(!video || !btn) return;
+
+            // ページ読み込み時に自動再生を試みる
+            document.addEventListener('DOMContentLoaded', function(){
+                // 既に muted 属性がある前提
+                video.play().then(()=> {
+                    // 自動再生成功 -> ボタンを隠す
+                    btn.style.display = 'none';
+                }).catch(()=> {
+                    // 自動再生失敗 -> ボタンは表示したまま（ユーザー操作で再生）
+                    btn.style.display = '';
+                });
+            });
+
+            // 再生ボタンクリックで再生（ユーザー操作なので自動再生ブロック回避）
+            btn.addEventListener('click', function(){
+                if(video.paused){
+                    // ユーザーが明示的にミュート解除したい場合はここで false に
+                    // video.muted = false;
+                    video.play().then(()=> btn.style.display = 'none').catch(()=>{ /* ignore */ });
+                } else {
+                    video.pause();
+                    btn.style.display = ''; // 一時停止時はボタンを見せる
+                }
+            });
+
+            // 動画のクリックで再生/一時停止
+            video.addEventListener('click', function(){
+                if(video.paused){
+                    video.play().then(()=> btn.style.display = 'none').catch(()=>{ /* ignore */ });
+                } else {
+                    video.pause();
+                    btn.style.display = '';
+                }
+            });
+
+            // 再生・一時停止の状態に応じてボタン表示を切り替え（保険）
+            video.addEventListener('play', ()=> btn.style.display = 'none');
+            video.addEventListener('pause', ()=> btn.style.display = '');
+
+            // ダブルクリックでフルスクリーン（対応ブラウザのみ）
+            video.addEventListener('dblclick', function(){
+                if(video.requestFullscreen) video.requestFullscreen();
+            });
+        })();
+    </script>
+</body>
+</html>
